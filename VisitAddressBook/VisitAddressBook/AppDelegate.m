@@ -18,36 +18,36 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #pragma mark 程序启动进行授权
     
-    //1、获取授权状态
-    ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
-    
-    //2、判断是否授权，如果没有授权就进行授权
-    /**
-     kABAuthorizationStatusNotDetermined = 0,  没有授权
-     kABAuthorizationStatusRestricted,         许可配置阻止了与通讯录的交互
-     kABAuthorizationStatusDenied,             用户拒绝
-     kABAuthorizationStatusAuthorized          用户授权
-     */
-    if (status == kABAuthorizationStatusNotDetermined) {
-        //2.1 、创建通讯录对象
-        
-        ABAddressBookRef addressRef = ABAddressBookCreateWithOptions(nil, nil);
-        
-        //2.2 、请求授权
-        ABAddressBookRequestAccessWithCompletion(addressRef, ^(bool granted, CFErrorRef error) {
-           
-            //2.2.1 、出错
-            if (error) return;
-            
-             //2.2.2 、判断授权
-            
-            if(granted){
-                NSLog(@"授权成功");
-            }else{
-                NSLog(@"授权失败");
-            }
-        });
-    }
+//    //1、获取授权状态
+//    ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+//    
+//    //2、判断是否授权，如果没有授权就进行授权
+//    /**
+//     kABAuthorizationStatusNotDetermined = 0,  没有授权
+//     kABAuthorizationStatusRestricted,         许可配置阻止了与通讯录的交互
+//     kABAuthorizationStatusDenied,             用户拒绝
+//     kABAuthorizationStatusAuthorized          用户授权
+//     */
+//    if (status == kABAuthorizationStatusNotDetermined) {
+//        //2.1 、创建通讯录对象
+//        
+//        ABAddressBookRef addressRef = ABAddressBookCreateWithOptions(nil, nil);
+//        
+//        //2.2 、请求授权
+//        ABAddressBookRequestAccessWithCompletion(addressRef, ^(bool granted, CFErrorRef error) {
+//           
+//            //2.2.1 、出错
+//            if (error) return;
+//            
+//             //2.2.2 、判断授权
+//            
+//            if(granted){
+//                NSLog(@"授权成功");
+//            }else{
+//                NSLog(@"授权失败");
+//            }
+//        });
+//    }
     
     return YES;
 }
